@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯赛程 · 信息卡片页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #ffe8c8 0%, #fddb9f 40%, #fbc77e 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    .page-wrapper {
+      max-width: 1120px;
+      width: 100%;
+    }
+
+    /* hero 区域 */
+    .hero-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(2px);
+      border-radius: 40px 40px 32px 32px;
+      padding: 2.8rem 2rem;
+      margin-bottom: 2.8rem;
+      box-shadow: 0 20px 35px -10px rgba(140, 80, 10, 0.2);
+      text-align: center;
+    }
+
+    .hero-card h1 {
+      font-size: 2.8rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      color: #4f2e0a;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-card p {
+      font-size: 1.15rem;
+      color: #6b3f13;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .hero-highlight {
+      display: inline-block;
+      background: #f3d59a;
+      color: #3f2406;
+      padding: 0.2rem 1rem;
+      border-radius: 50px;
+      font-weight: 500;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    /* 通用卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.8rem 1.5rem 2rem;
+      box-shadow: 0 12px 28px -8px rgba(110, 60, 5, 0.12);
+      transition: transform 0.18s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px -12px rgba(130, 70, 8, 0.2);
+    }
+
+    .card-icon {
+      font-size: 2.4rem;
+      margin-bottom: 0.35rem;
+      display: inline-block;
+    }
+
+    .info-card h3 {
+      font-size: 1.4rem;
+      font-weight: 580;
+      color: #3a260c;
+      margin: 0.3rem 0 0.8rem;
+      border-bottom: 2px solid #f7d9a8;
+      padding-bottom: 0.4rem;
+      display: inline-block;
+    }
+
+    .info-card p {
+      color: #4a3822;
+      line-height: 1.6;
+      font-size: 0.98rem;
+      flex: 1;
+    }
+
+    .info-card .tag {
+      margin-top: 1rem;
+      display: inline-block;
+      background: #fcefd8;
+      border-radius: 30px;
+      padding: 0.25rem 0.9rem;
+      font-size: 0.8rem;
+      color: #6e4a1c;
+      align-self: flex-start;
+    }
+
+    /* 用途 + 人群双列卡片（两栏布局） */
+    .double-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-bottom: 2.8rem;
+    }
+
+    @media (max-width: 680px) {
+      .double-column {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .double-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.8rem 1.6rem 2.2rem;
+      box-shadow: 0 12px 28px -8px rgba(110, 60, 5, 0.1);
+      transition: box-shadow 0.2s;
+    }
+
+    .double-card:hover {
+      box-shadow: 0 16px 30px -8px rgba(100, 55, 8, 0.18);
+    }
+
+    .double-card h3 {
+      font-size: 1.5rem;
+      font-weight: 550;
+      color: #3e280c;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .double-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .double-card li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.98rem;
+      color: #4b341c;
+      line-height: 1.5;
+    }
+
+    .double-card li::before {
+      content: "▹";
+      color: #d89f4a;
+      font-weight: bold;
+    }
+
+    .double-card .footnote {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #7b5d32;
+      border-left: 3px solid #f0ca85;
+      padding-left: 0.8rem;
+    }
+
+    /* 自然链接段落卡片 */
+    .link-block {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem 2rem 2.2rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 10px 24px -8px rgba(100, 60, 10, 0.08);
+    }
+
+    .link-block h2 {
+      font-size: 1.5rem;
+      font-weight: 570;
+      color: #3f280d;
+      margin-bottom: 1rem;
+      border-left: 6px solid #e7b56b;
+      padding-left: 0.8rem;
+    }
+
+    .link-block p {
+      font-size: 1.02rem;
+      color: #3f2d13;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .link-block a {
+      color: #975a1a;
+      background: #f7e6cd;
+      text-decoration: none;
+      padding: 0.1rem 0.6rem;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+      border-bottom: 1px dashed #dba55f;
+    }
+
+    .link-block a:hover {
+      background: #ebca98;
+      color: #4e2d09;
+      border-bottom-color: #b07a32;
+    }
+
+    /* faq 摘要卡片 */
+    .faq-mini {
+      background: #ffffffd9;
+      backdrop-filter: blur(3px);
+      border-radius: 36px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.8rem;
+      box-shadow: 0 8px 18px -6px rgba(90, 50, 6, 0.08);
+    }
+
+    .faq-mini h3 {
+      font-size: 1.3rem;
+      font-weight: 530;
+      color: #4d310e;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .faq-q {
+      font-weight: 550;
+      color: #553712;
+      min-width: 4rem;
+    }
+
+    .faq-a {
+      color: #5a3f1b;
+    }
+
+    .faq-a a {
+      color: #8f5b1f;
+      text-decoration: underline wavy #eec285 1px;
+      text-underline-offset: 4px;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      text-align: center;
+      color: #5a3d16;
+      font-size: 0.9rem;
+      padding: 0.8rem 0 1.5rem;
+      border-top: 1px solid #e8cba2;
+      margin-top: 0.5rem;
+    }
+
+    .footer-note span {
+      background: #f7e2c2;
+      padding: 0.1rem 0.8rem;
+      border-radius: 40px;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- hero 主视觉 -->
+  <div class="hero-card">
+    <h1>⚽ 赛程·秩序·视野</h1>
+    <p>当大赛的号角从各洲吹响，赛历便成为球迷最可靠的罗盘。<br>
+    从小组赛到淘汰赛，每一条时间线都承载着期待。</p>
+    <div class="hero-highlight">基于赛程逻辑的信息框架</div>
+  </div>
+
+  <!-- 信息卡片：主题分解 -->
+  <div class="card-grid">
+    <div class="info-card">
+      <span class="card-icon">🗓️</span>
+      <h3>赛历锚点</h3>
+      <p>比赛日、轮次与开球时间构成完整的时间轴。了解赛程结构，才能提前规划观赛节奏，不错过关键对决。</p>
+      <span class="tag">时间线 · 分组</span>
+    </div>
+    <div class="info-card">
+      <span class="card-icon">🏟️</span>
+      <h3>场地与轮转</h3>
+      <p>主办城市与场馆分布影响球队备战与旅行疲劳。赛程不仅是日期，更是一幅地理与策略交织的地图。</p>
+      <span class="tag">主办 · 移动</span>
+    </div>
+    <div class="info-card">
+      <span class="card-icon">📊</span>
+      <h3>阶段推演</h3>
+      <p>从小组出线形势到淘汰赛潜在对阵，赛程中的逻辑链帮助球迷与分析师提前构建比赛叙事。</p>
+      <span class="tag">晋级 · 对阵</span>
+    </div>
+  </div>
+
+  <!-- 两栏：用途 + 适合人群 -->
+  <div class="double-column">
+    <div class="double-card">
+      <h3><span>🎯</span> 用途场景</h3>
+      <ul>
+        <li>快速查阅当月及未来比赛日，制定个人观赛计划</li>
+        <li>对比不同小组的赛程密度与休息间隔，辅助赛事分析</li>
+        <li>结合时区换算，不错过任何一场焦点战的开球</li>
+        <li>作为内容创作者的基础素材，制作赛程海报与预告</li>
+      </ul>
+      <div class="footnote">赛程信息适合嵌入各类球迷工具与社区讨论。</div>
+    </div>
+    <div class="double-card">
+      <h3><span>🧑‍🤝‍🧑</span> 适合人群</h3>
+      <ul>
+        <li>深度球迷：追踪完整赛历，分析轮换与出线关键战</li>
+        <li>赛事编辑：需要可靠赛程节点进行内容规划</li>
+        <li>数据分析爱好者：研究赛程分布与球队表现关联</li>
+        <li>泛体育迷：在大型赛事期间快速建立时间框架</li>
+      </ul>
+      <div class="footnote">无论你是哪种类型的关注者，清晰的赛程都是观赛的起点。</div>
+    </div>
+  </div>
+
+  <!-- 自然链接段落 -->
+  <div class="link-block">
+    <h2>从赛历到故事</h2>
+    <p>大赛的魅力有一部分藏在赛程的褶皱里——背靠背比赛、长途飞行后的调整、小组末轮的微妙形势。这些细节被整理成结构化的信息，方便每个人按图索骥。如果你希望直接获取完整的比赛时间线，不妨翻阅 <a href="https://official-wcschedule.com">世界杯赛程</a> 页面，那里以清晰的时间轴方式呈现了每一轮的对阵与日期。</p>
+    <p>同时，赛程也是球迷文化的一部分：朋友们约看哪场、假期如何安排、哪些比赛可能产生冷门，都能从日程中嗅到线索。信息本身并不制造激情，但有序的赛历能让激情找到落点。</p>
+  </div>
+
+  <!-- FAQ 摘要卡片 -->
+  <div class="faq-mini">
+    <h3>❓ 赛程相关 · 简短问答</h3>
+    <div class="faq-item">
+      <span class="faq-q">赛程何时更新？</span>
+      <span class="faq-a">官方通常在抽签后公布完整赛历，后续调整会及时同步于赛事渠道。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">如何区分小组赛与淘汰赛？</span>
+      <span class="faq-a">赛程表中会标注轮次与阶段，淘汰赛通常以“1/8 决赛”等字样区分。</span>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">同一球队的两场比赛间隔多久？</span>
+      <span class="faq-a">小组赛阶段一般间隔 3–4 天，淘汰赛视场地安排而定。具体可参照 <a href="https://official-wcschedule.com">世界杯赛程</a> 中的日期间隔。</span>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <div class="footer-note">
+    <span>知识型信息卡片 · 基于公开赛历整理</span>
+  </div>
+
+</div>
+</body>
+</html>
