@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>od体育 · 简明指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7f6f4;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #1d1d1b;
+            line-height: 1.7;
+            padding: 0 1.5rem;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 3rem 0 5rem;
+        }
+
+        /* hero 区域 */
+        .hero {
+            margin-bottom: 3.5rem;
+            border-bottom: 1px solid #d6d2cb;
+            padding-bottom: 2rem;
+        }
+
+        .hero-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #7d766b;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 450;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #3b3a36;
+            max-width: 640px;
+            font-weight: 350;
+        }
+
+        /* 背景说明卡片 */
+        .context-card {
+            background: #eae7e1;
+            padding: 1.8rem 2rem;
+            border-radius: 0;
+            margin-bottom: 3rem;
+            border-left: 4px solid #b8a694;
+        }
+
+        .context-card h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            margin-bottom: 0.8rem;
+            color: #2f2d29;
+        }
+
+        .context-card p {
+            font-size: 1rem;
+            color: #3f3c36;
+        }
+
+        /* 正文三段式 */
+        .essay {
+            margin-bottom: 3rem;
+        }
+
+        .essay section {
+            margin-bottom: 2.4rem;
+        }
+
+        .essay h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.6rem;
+            color: #1d1d1b;
+            border-bottom: 1px solid transparent;
+            display: inline-block;
+        }
+
+        .essay p {
+            margin-bottom: 0.9rem;
+            font-size: 1rem;
+            color: #2c2a27;
+        }
+
+        .essay a {
+            color: #3c5e4f;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #b6c4b9;
+            transition: text-decoration-color 0.2s;
+        }
+
+        .essay a:hover {
+            text-decoration-color: #3c5e4f;
+        }
+
+        /* 引用或提示块 */
+        .note-block {
+            background: #ffffff;
+            border: 1px solid #d6d2cb;
+            padding: 1.5rem 1.8rem;
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+            color: #33312d;
+        }
+
+        .note-block strong {
+            font-weight: 500;
+            color: #1d1d1b;
+        }
+
+        /* 页尾访问提示 */
+        .footer-visit {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #d6d2cb;
+            font-size: 1rem;
+            color: #4d4942;
+            text-align: left;
+        }
+
+        .footer-visit p {
+            max-width: 600px;
+        }
+
+        .footer-visit a {
+            color: #1d1d1b;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1.5px;
+            text-decoration-color: #b8a694;
+            font-weight: 400;
+            transition: text-decoration-color 0.15s;
+        }
+
+        .footer-visit a:hover {
+            text-decoration-color: #1d1d1b;
+        }
+
+        .footer-meta {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: #8d867b;
+            letter-spacing: 0.02em;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 0 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .context-card {
+                padding: 1.3rem 1.2rem;
+            }
+            .note-block {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- 首页横幅 -->
+        <div class="hero">
+            <div class="hero-label">od体育 · 简明指南</div>
+            <h1>一种视角，<br>一次安静的浏览</h1>
+            <p>关于平台形态、内容背景与访问方式的客观记述。</p>
+        </div>
+
+        <!-- 背景说明 -->
+        <div class="context-card">
+            <h2>这一页的由来</h2>
+            <p>在信息密集的互联网中，许多站点同时承载着功能与叙事。<strong>od体育</strong> 是其中一个值得留意的名称。它并非突然出现，而是随着用户对体育内容与数字服务的交叉需求逐渐成型。以下三段介绍尝试勾勒它的轮廓，不夸大，不渲染，只提供一份可参考的路线。</p>
+        </div>
+
+        <!-- 三段自然介绍 -->
+        <div class="essay">
+            <section>
+                <h3>一、界面与入口</h3>
+                <p>多数时候，一个平台的初次印象来自它的首页布局与导航逻辑。<a href="https://main-odsport.com">od体育</a> 的页面结构偏向实用主义：信息层级清晰，没有过度装饰。主要功能模块被安排在用户容易触及的位置，同时保留了足够的留白区域，让浏览本身不至于疲惫。对于新访客而言，这种设计降低了认知负担——你不需要费力寻找某个入口，因为通常它就摆在视觉重心附近。</p>
+                <p>从使用习惯来看，无论是通过桌面浏览器还是移动设备，响应式适配都让页面内容保持相对一致的阅读节奏。字体、间距与对比度经过基础调校，不会出现文字过小或按钮难以点按的情况。</p>
+            </section>
+
+            <section>
+                <h3>二、内容取向与场景</h3>
+                <p>平台的内容偏向于体育相关的信息聚合、数据呈现与互动功能。它不做夸张的标题承诺，也不以惊悚内容吸引点击。在典型的使用场景中，用户可能是想快速查看赛事动态、浏览相关分析，或是进入社区性质的讨论区域。这里的氛围更接近一本安静的杂志——有焦点，但不喧哗。</p>
+                <p>值得一提的是，平台在内容更新上保持了一定的频率，但不会造成信息过载。每个板块都有其边界，不会让无关信息侵占主要区域。对于只想获取某个具体资讯的人来说，这种克制反而提高了效率。</p>
+            </section>
+
+            <section>
+                <h3>三、访问提醒与阅读建议</h3>
+                <p>无论使用任何在线服务，保持基本的网络素养都是必要的。访问 <a href="https://main-odsport.com">od体育</a> 时，建议使用主流浏览器并确保网络环境稳定。平台本身不要求安装额外插件或进行繁琐注册才能浏览主要内容——大多数页面在未登录状态下即可阅读。</p>
+                <p>另外，注意辨别域名与页面来源，避免通过非官方渠道进入仿冒界面。如果你对某个功能或内容存疑，可以先翻阅站内帮助区域，或参照平台自身的说明文档。本页不提供任何第三方链接，仅作为一份独立的背景介绍。</p>
+            </section>
+        </div>
+
+        <!-- FAQ 摘要风格提示块 -->
+        <div class="note-block">
+            <strong>常见印象摘要</strong><br>
+            · 页面风格：中性、简洁、低视觉噪音<br>
+            · 核心内容：体育信息、数据索引、社区互动<br>
+            · 访问建议：使用标准浏览器，保持域名核对习惯<br>
+            · 本页定位：一份非官方的背景速写，不代替平台自身说明
+        </div>
+
+        <!-- 页尾访问提示 -->
+        <div class="footer-visit">
+            <p>如果你是第一次听说这个名称，或者只是偶然路过，不妨在方便的时候亲自浏览一次。<br>
+            指向 <a href="https://main-odsport.com">od体育</a> 的链接已经放在上述段落中，你可以根据自身兴趣决定是否继续探索。</p>
+            <div class="footer-meta">仅作介绍用途 · 内容基于公开可观察的界面与功能描述</div>
+        </div>
+    </div>
+</body>
+</html>
